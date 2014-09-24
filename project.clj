@@ -3,8 +3,11 @@
   :url "http://example.com/FIXME"
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [compojure "1.1.6"]
-                 [javax.servlet/servlet-api "2.5"]
-]
+                 ;; Adding servlet-api to dependencies because
+                 ;; lein with-profile production compile :all fails without
+                 ;; it on my Linux box for reasons that I have yet to track
+                 ;; down
+                 [javax.servlet/servlet-api "2.5"]]
   :plugins [[lein-ring "0.8.11"]]
   :ring {:handler hello-clojure.handler/app}
   :profiles
